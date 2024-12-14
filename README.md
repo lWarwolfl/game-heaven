@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Game Heaven
+
+This project is the base for all startup apps that will be developed for customers.
+
+## Features
+
+- Next.js framework app router for server-side rendering and optimized performance.
+- Seamless functionality for handling data by utilizing next.js server actions and connecting to it using React Query.
+- TypeScript for type safety and enhanced development experience.
+- Using jest for unit testing and story book for documenting to insure long term support.
+- Tailwind CSS for scalable and maintainable styling.
+- Reusable components that can be easily integrated into other projects.
 
 ## Getting Started
 
-First, run the development server:
+To get started with Game Heaven, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/lWarwolfl/game-heaven.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd game-heaven
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app.
+
+## Directory Structure
+
+The project's directory structure is as follows:
+
+```
+sugimoto-boilerplate/
+  ├── src/
+    ├── app/                        # Project pages and favicon ONLY
+    ├── components/                 # All project components
+    ├── components/common           # Reusable UI components built on base components
+    ├── components/feature          # Reusable Feature components
+    ├── components/layout           # Components needed in app layouts
+    ├── components/pages            # Components used in pages following this naming convention:
+                                    component name: {Route Name(Pascal Case)}Component used in tsx component
+                                    folder: {route}/index.tsx
+                                    Eg. dashboard/index.tsx DashboardComponent
+    ├── components/providers        # Wrapper components
+    ├── components/ui               # Base UI components
+    ├── data/                       # All mock data
+    ├── lib/                        # All reusable scripts
+    ├── lib/context                 # Reusable contexts for features
+    ├── lib/form                    # Form configurationm files
+    ├── lib/form/actions            # Serverside form actions
+    ├── lib/form/validations        # Project form validation schemas
+    ├── lib/hooks                   # Reusable hooks
+    ├── lib/store                   # Zustand configuration
+    ├── lib/typescript              # Reusable typescript definitions
+    ├── lib/typescript/interfaces   # Reusable interfaces
+    ├── lib/typescript/types        # Reusable types
+    ├── lib/utils.ts                # All reusable functions
+    ├── styles/                     # Project global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
