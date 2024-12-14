@@ -73,4 +73,3 @@ sugimoto-boilerplate/
     ├── lib/utils.ts                # All reusable functions
     ├── styles/                     # Project global styles
 ```
-
