@@ -1,0 +1,77 @@
+{
+  "UserRole": {
+    "crm_member": "CRM Member",
+    "crm_management": "CRM Management"
+  },
+  "Routes": {
+    "dashboard": "Dashboard",
+    "analyze": "Analyze",
+    "leads": "Leads",
+    "practice": "Practice",
+    "targets": "Targets",
+    "subscription": "Subscription"
+  },
+  "LogOutAlert": {
+    "title": "Are you sure you want to log out?",
+    "message": "Signing out will end your current session. Are you sure you want to continue?",
+    "cancel": "Cancel",
+    "confirm": "Log Out",
+    "redirect": "Redirecting..."
+  },
+  "DashboardSidebar": {
+    "log_out": "Log Out"
+  },
+  "Auth": {
+    "SignUp": {
+      "title": "Register",
+      "email_label": "Email",
+      "password_label": "Password",
+      "submit": "Register",
+      "have_account_message": "Already have an account?",
+      "signIn": "Login"
+    },
+    "SignIn": {
+      "title": "Login",
+      "email_label": "Email",
+      "password_label": "Password",
+      "submit": "Login",
+      "forget": "Forget password",
+      "dont_have_account": "Don't have an account?",
+      "signup": "Register",
+      "loading": "You are logging in..."
+    },
+    "CompleteRegistration": {
+      "title": "Complete registration",
+      "company_name_label": "Company Name",
+      "company_name_placeholder": "Apple Inc.",
+      "role_label": "Role",
+      "main_goal_label": "Main Goal",
+      "main_goal_placeholder": "Your main goal for using ColdCoach",
+      "role_placeholder": "Your role in the company",
+      "submit": "Submit"
+    }
+  },
+  "FormErrors": {
+    "SignIn": {
+      "invalid_email": "Invalid email address",
+      "password_len": "Password must be at least 6 characters long.",
+      "password_lowercase": "Password must include at least one lowercase letter.",
+      "password_uppercase": "Password must include at least one uppercase letter.",
+      "password_digits": "Password must include at least one digit.",
+      "password_symbol": "Password must include at least one symbol."
+    },
+    "SignUp": {
+      "invalid_email": "Invalid email address",
+      "password_len": "Password must be at least 6 characters long.",
+      "password_lowercase": "Password must include at least one lowercase letter.",
+      "password_uppercase": "Password must include at least one uppercase letter.",
+      "password_digits": "Password must include at least one digit.",
+      "password_symbol": "Password must include at least one symbol."
+    },
+    "CompleteRegistration": {
+      "company_name_len": "Company name must be at least 3 characters long.",
+      "main_goal_len": "Main goal must be at least 16 characters long.",
+      "invalid_role": "Please select your role."
+    }
+  }
+}
