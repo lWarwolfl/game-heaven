@@ -9,14 +9,14 @@ import {
   type Row,
 } from '@tanstack/react-table'
 
-export interface TableProps<TData extends object, TValue> {
+export interface TableProps<TData, TValue> {
   data: TData[]
   columns: ColumnDef<TData, TValue>[]
   fixed?: boolean
   className?: string
 }
 
-export const Table = <TData extends object, TValue>({
+export const Table = <TData, TValue>({
   data,
   columns,
   fixed,
