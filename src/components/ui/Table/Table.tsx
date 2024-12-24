@@ -1,100 +1,106 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn, fuzzyFilter } from '@/lib/utils'
 import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
   type ColumnDef,
   type Row,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
 } from '@tanstack/react-table'
 
-export interface TableProps<TData, TValue> {
-  data: TData[]
+export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  fixed?: boolean
-  className?: string
+  data: TData[]
 }
 
-export const Table = <TData, TValue>({
-  data,
-  columns,
-  fixed,
-  className,
-}: TableProps<TData, TValue>) => {
+export function Table<TData, TValue>({ data, columns }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    filterFns: {
+      fuzzy: fuzzyFilter<TData>(),
+    },
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getRowCanExpand: () => true,
+    enableRowSelection: true,
   })
 
   return (
-    <table
-      className={cn(
-        fixed && 'table-fixed',
-        'max-h-[100px]',
-        'w-full',
-        'border-separate',
-        'border-spacing-y-3',
-        'rounded-150',
-        'bg-gray50',
-        'p-4',
-        'text-sm'
-      )}
-    >
-      <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th
-                key={header.id}
-                className={cn(
-                  'bg-gray50 w-auto border-b py-4',
-                  'px-1',
-                  'text-title_md text-gray800 text-right',
-                  'capitalize',
-                  'first:rounded-r-md',
-                  'last:rounded-l-md'
-                )}
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(header.column.columnDef.header, header.getContext())}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody className="">
-        {table.getRowModel().rows.map((row: Row<TData>, index) => (
-          <tr
-            key={row.id}
-            className={cn(
-              className,
-              'py-4',
-              'text-body_lg text-gray800 rounded-e-lg',
-              index % 2 === 0 ? 'bg-gray100' : ''
-            )}
-          >
-            {row.getVisibleCells().map((cell) => (
-              <td
-                key={cell.id}
-                className={cn(
-                  fixed && 'truncate',
-                  'px-2',
-                  'py-3',
-                  'first:rounded-r-md',
-                  'last:rounded-l-md'
-                )}
-              >
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <>
+      <div className="mt-10 flex w-full justify-center">
+        <input
+          onChange={(e) => table.setGlobalFilter(e.target.value)}
+          width="300px"
+          height="300px"
+          placeholder="Search..."
+          className="border-2 border-gray-500"
+        />
+      </div>
+
+      <table
+        className={cn(
+          'max-h-[100px]',
+          'w-full',
+          'border-separate',
+          'border-spacing-y-3',
+          'rounded-150',
+          'bg-gray50',
+          'p-4',
+          'text-sm'
+        )}
+      >
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th
+                  key={header.id}
+                  className={cn(
+                    'bg-gray50 w-auto border-b py-4',
+                    'px-1',
+                    'text-title_md text-gray800 text-right',
+                    'capitalize',
+                    'first:rounded-r-md',
+                    'last:rounded-l-md'
+                  )}
+                >
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(header.column.columnDef.header, header.getContext())}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody className="">
+          {table.getRowModel().rows.map((row: Row<TData>, index) => (
+            <tr
+              key={row.id}
+              className={cn(
+                'py-4',
+                'text-body_lg text-gray800 rounded-e-lg',
+                index % 2 === 0 ? 'bg-gray100' : ''
+              )}
+            >
+              {row.getVisibleCells().map((cell) => (
+                <td
+                  key={cell.id}
+                  className={cn('px-2', 'py-3', 'first:rounded-r-md', 'last:rounded-l-md')}
+                >
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   )
 }
-
-export default Table
