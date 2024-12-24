@@ -1,6 +1,8 @@
+import tailwindConfig from '@/../tailwind.config'
+import { rankItem } from '@tanstack/match-sorter-utils'
+import type { FilterFn } from '@tanstack/react-table'
 import { type ClassValue, clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
-import tailwindConfig from '@/../tailwind.config'
 
 const customTwMerge = extendTailwindMerge({
   extend: {
@@ -34,3 +36,10 @@ export const Sleep = (delay = 1000) => {
 export function splitPathname(pathname: string, depth = 2) {
   return pathname.split('/').at(depth)
 }
+export const fuzzyFilter =
+  <T>(): FilterFn<T> =>
+  (row, columnId, value, addMeta) => {
+    const itemRank = rankItem(row.getValue(columnId), value)
+    addMeta({ itemRank })
+    return itemRank.passed
+  }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import type { ColumnDef } from '@tanstack/react-table'
-import { Table, type TableProps } from './Table'
+import { Table, type DataTableProps } from './Table'
 
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',
@@ -10,7 +10,7 @@ const meta: Meta<typeof Table> = {
 
 export default meta
 
-type Story<TData extends object, TValue> = StoryObj<TableProps<TData, TValue>>
+type Story<TData extends object, TValue> = StoryObj<DataTableProps<TData, TValue>>
 
 // Sample data
 interface User {
@@ -54,7 +54,6 @@ export const Default: Story<User, unknown> = {
 export const FixedWidth: Story<User, unknown> = {
   args: {
     ...Default.args,
-    fixed: true,
   },
 }
 
@@ -62,7 +61,6 @@ export const FixedWidth: Story<User, unknown> = {
 export const CustomClass: Story<User, unknown> = {
   args: {
     ...Default.args,
-    className: 'bg-blue-100',
   },
 }
 
