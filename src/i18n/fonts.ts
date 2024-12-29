@@ -5,6 +5,7 @@ export const inter = Inter({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-lexend',
 })
+
 export const vazirmatn = Vazirmatn({
   subsets: ['arabic'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],

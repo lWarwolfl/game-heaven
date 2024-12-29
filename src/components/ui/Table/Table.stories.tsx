@@ -1,6 +1,6 @@
+import { Table, type DataTableProps } from '@/components/ui/Table/Table'
 import type { Meta, StoryObj } from '@storybook/react'
 import type { ColumnDef } from '@tanstack/react-table'
-import { Table, type DataTableProps } from './Table'
 
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',

@@ -1,26 +1,10 @@
-import tailwindConfig from '@/../tailwind.config'
 import { rankItem } from '@tanstack/match-sorter-utils'
 import type { FilterFn } from '@tanstack/react-table'
 import { type ClassValue, clsx } from 'clsx'
-import { extendTailwindMerge } from 'tailwind-merge'
-
-const customTwMerge = extendTailwindMerge({
-  extend: {
-    classGroups: {
-      shadow: Object.keys(tailwindConfig.theme.extend.boxShadow).map((v) => `shadow-${v}`),
-      rounded: Object.keys(tailwindConfig.theme.extend.borderRadius).map((v) => `rounded-${v}`),
-      'font-weight': Object.keys(tailwindConfig.theme.extend.fontSize).map((v) => `text-${v}`),
-      'font-size': [
-        {
-          text: Object.keys(tailwindConfig.theme.extend.fontSize),
-        },
-      ],
-    },
-  },
-})
+import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
-  return customTwMerge(clsx(inputs))
+  return twMerge(clsx(inputs))
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
