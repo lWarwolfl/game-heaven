@@ -12,28 +12,30 @@ export const metadata: Metadata = {
     canonical: '/',
     languages: getAlternativeLocales(),
   },
-  title: 'machSitter - Childcare and Medical Consultation Services',
+  title: 'Game Heaven - Your Ultimate Online Game Shop',
   description:
-    'machSitter is an innovative platform for parents to find childcare providers and access medical services from specialized doctors. We bridge the gap between families and care providers, ensuring peace of mind and reliability for your needs.',
+    'Game Heaven is your one-stop online game shop for the latest video games, accessories, and collectibles. We offer a wide selection of gaming products, unbeatable deals, and reliable customer service for gamers of all levels.',
   keywords: [
-    'machSitter',
-    'childcare',
-    'child medical services',
-    'medical consultation',
-    'parental services',
-    'child care',
-    'professional babysitter',
-    'pediatric doctor',
-    'parents',
-    'nursing services',
-    'family services',
-    'home childcare',
+    'Game Heaven',
+    'online game shop',
+    'video games',
+    'gaming accessories',
+    'game collectibles',
+    'latest games',
+    'gaming store',
+    'buy video games',
+    'online gaming store',
+    'game deals',
+    'game shopping',
+    'gaming products',
   ],
 }
 
 type RootLayoutProps = PropsWithChildren
+
 export default async function RootLayout({ children }: RootLayoutProps) {
   const locale = await getLocaleWithProps()
+
   return (
     <html lang={locale.locale} dir={locale.direction} suppressHydrationWarning>
       <body

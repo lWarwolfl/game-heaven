@@ -1,6 +1,6 @@
 # Game Heaven
 
-This project is the base for all startup apps that will be developed for customers.
+This project is a group effort to learn new technologies and master already known ones.
 
 ## Features
 

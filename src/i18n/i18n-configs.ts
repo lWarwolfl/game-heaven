@@ -1,20 +1,13 @@
-import { type Fonts, inter, vazirmatn } from '@/i18n/fonts'
+import { type Fonts, lexend } from '@/i18n/fonts'
 import { useLocale } from 'next-intl'
 import createMiddleware from 'next-intl/middleware'
 import { getLocale } from 'next-intl/server'
 
 export type Direction = 'rtl' | 'ltr'
 
-export type I18nLocale = 'fa' | 'en' | 'fr' | 'es' | 'de' | 'it' | 'sv' | 'nl'
-export type LanguageCode =
-  | 'fa-IR'
-  | 'en-US'
-  | 'fr-FR'
-  | 'es-ES'
-  | 'de-DE'
-  | 'it-IT'
-  | 'sv-SE'
-  | 'nl-NL'
+export type I18nLocale = 'en' | 'de'
+
+export type LanguageCode = 'en-US' | 'de-DE'
 
 interface I18nLocaleProps {
   direction: Direction
@@ -26,16 +19,16 @@ interface I18nLocaleProps {
 export const defaultLocale: I18nLocale = 'en'
 export const locales: I18nLocaleProps[] = [
   {
-    locale: 'fa',
-    direction: 'rtl',
-    languageCode: 'fa-IR',
-    font: vazirmatn,
+    locale: 'de',
+    direction: 'ltr',
+    languageCode: 'de-DE',
+    font: lexend,
   },
   {
     locale: 'en',
     direction: 'ltr',
     languageCode: 'en-US',
-    font: inter,
+    font: lexend,
   },
 ]
 
