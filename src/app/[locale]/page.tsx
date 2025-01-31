@@ -1,5 +1,5 @@
 import AnimatedButton from '@/components/ui/AnimatedButton/AnimatedButton'
-import Button from '@/components/ui/Button2/Button'
+import Button from '@/components/ui/Button/Button'
 
 export default function Home() {
   return (
