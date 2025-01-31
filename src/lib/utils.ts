@@ -20,6 +20,7 @@ export const Sleep = (delay = 1000) => {
 export function splitPathname(pathname: string, depth = 2) {
   return pathname.split('/').at(depth)
 }
+
 export const fuzzyFilter =
   <T>(): FilterFn<T> =>
   (row, columnId, value, addMeta) => {
