@@ -11,13 +11,13 @@ export default function AnimatedButton({ className, children, ...props }: Animat
 
   function onMouseEnter(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (ref.current && boxRef.current) {
-      const corner = closestEdge(event, ref.current)
+      const styles = closestEdge(event, ref.current)
 
-      if (corner) {
-        boxRef.current.style.top = corner.top
-        boxRef.current.style.right = corner.right
-        boxRef.current.style.bottom = corner.bottom
-        boxRef.current.style.left = corner.left
+      if (styles) {
+        boxRef.current.style.top = styles.top
+        boxRef.current.style.right = styles.right
+        boxRef.current.style.bottom = styles.bottom
+        boxRef.current.style.left = styles.left
       }
     }
   }
