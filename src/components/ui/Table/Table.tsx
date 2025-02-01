@@ -11,6 +11,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+import { useDeferredValue, useEffect, useState } from 'react'
 
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -18,6 +19,9 @@ export interface DataTableProps<TData, TValue> {
 }
 
 export function Table<TData, TValue>({ data, columns }: DataTableProps<TData, TValue>) {
+  const [searchInput, setSearchInput] = useState('')
+  const deferredSearchInput = useDeferredValue(searchInput)
+
   const table = useReactTable({
     data,
     columns,
@@ -32,11 +36,15 @@ export function Table<TData, TValue>({ data, columns }: DataTableProps<TData, TV
     enableRowSelection: true,
   })
 
+  useEffect(() => {
+    table.setGlobalFilter(deferredSearchInput)
+  }, [deferredSearchInput, table])
+
   return (
     <>
       <div className="mt-10 flex w-full justify-center">
         <input
-          onChange={(e) => table.setGlobalFilter(e.target.value)}
+          onChange={(e) => setSearchInput(e.target.value)}
           width="300px"
           height="300px"
           placeholder="Search..."
