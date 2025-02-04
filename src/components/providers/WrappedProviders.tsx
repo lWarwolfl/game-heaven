@@ -1,4 +1,5 @@
 import ToasterComponent from '@/components/common/ToasterComponent'
+import { ModalProvider } from '@/components/providers/ModalProvider'
 import NextIntlProvider from '@/components/providers/NextIntlProvider'
 import ReactQueryProvider from '@/components/providers/ReactQueryProvider'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
@@ -9,8 +10,10 @@ const WrappedProviders = async ({ children }: WrappedProvidersProps) => {
   return (
     <ThemeProvider>
       <NextIntlProvider>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
-        <ToasterComponent />
+        <ModalProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+          <ToasterComponent />
+        </ModalProvider>
       </NextIntlProvider>
     </ThemeProvider>
   )

@@ -1,10 +1,11 @@
+import SecondOpenModalHome from '@/components/pages/home/SecondOpenModalHome'
 import AnimatedButton from '@/components/ui/AnimatedButton/AnimatedButton'
-import Button from '@/components/ui/Button/Button'
 
 export default function Home() {
   return (
     <div className="flex h-dvh w-full flex-col items-center justify-center gap-6">
-      <Button>Normal</Button>
+      {/* <OpenModalHome /> */}
+      <SecondOpenModalHome />
 
       <AnimatedButton>Animated</AnimatedButton>
     </div>
