@@ -2,13 +2,13 @@ import { cn } from '@/lib/utils'
 import type React from 'react'
 import { useEffect, useRef } from 'react'
 
-interface ModalProps {
+interface ModalProps extends React.ComponentProps<'div'> {
   isOpen: boolean
   onClose: () => void
   children: React.ReactNode
 }
 
-export function Modal({ isOpen, onClose, children }: ModalProps) {
+const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -53,15 +53,37 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          className="absolute right-2 top-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-          onClick={onClose}
-          aria-label="Close modal"
-        >
-          X
-        </button>
         {children}
       </div>
     </div>
   )
 }
+
+const ModalContent = ({ className, children, ...props }: React.ComponentProps<'div'>) => (
+  <div className={cn(className)} {...props}>
+    {children}
+  </div>
+)
+interface ModalHeaderProps extends React.ComponentProps<'div'> {
+  onClose: () => void
+}
+const ModalHeader = ({ children, onClose, ref, className, ...props }: ModalHeaderProps) => (
+  <div ref={ref} className={cn(className, 'flex items-center justify-between')} {...props}>
+    <button
+      className="absolute right-2 top-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+      onClick={onClose}
+      aria-label="Close modal"
+    >
+      X
+    </button>
+    {children}
+  </div>
+)
+
+const ModalFooter = ({ className, children, ...props }: React.ComponentProps<'div'>) => (
+  <div className={cn(className, 'flex items-center justify-between')} {...props}>
+    {children}
+  </div>
+)
+
+export { Modal, ModalContent, ModalFooter, ModalHeader }
